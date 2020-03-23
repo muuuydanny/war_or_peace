@@ -73,7 +73,7 @@ class PlayerTest < Minitest::Test
 
     def test_there_is_a_winner_for_war
       turn = Turn.new(@player1, @player2)
-      assert_equal @player1, turn.winner #look here later should be @player2
+      assert_equal @player1, turn.winner
     end
 
     def test_change_turn_type_to_mad
