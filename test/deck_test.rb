@@ -3,8 +3,6 @@ require 'minitest/pride'
 require './lib/deck'
 require './lib/card'
 
-#cards and deck as instance varaibles to get rid of long set up
-
 class DeckTest < Minitest::Test
   def setup
     cards = [
@@ -35,7 +33,6 @@ class DeckTest < Minitest::Test
 
     deck = Deck.new(cards)
 
-#test it has cards --create new method above test_it_rank_of_card_at
     assert_equal cards, deck.cards
     assert_equal 12, deck.rank_of_card_at(0)
   end
@@ -76,7 +73,6 @@ class DeckTest < Minitest::Test
     deck = Deck.new(cards)
     assert_equal cards[0], deck.remove_card
     assert_equal 2, deck.cards.length
-    #cards index zero to make sure first card is the one removed
   end
 
   def test_add_card
