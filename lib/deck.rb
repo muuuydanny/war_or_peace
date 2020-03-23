@@ -5,7 +5,7 @@ class Deck
     @cards = cards
   end
 
-  def rank_of_card_at(position)
+  def rank_of_card_at(position) 
     @cards[position].rank
   end
 
@@ -30,15 +30,19 @@ class Deck
 #could change to high_ranking_cards could get rid percent_high_ranking
   end
 
+  def shuffle
+    @cards = @cards.shuffle
+    @cards
+  end
 
   def remove_card
-    cards.shift
+    @cards.shift
     #want to remove first item in the array
     #look into method .shift
   end
 
   def add_card(card)
-    cards.push(card)
+    @cards.push(card)
   end
 
 #ruby convention use @ instance variable instead of attr_reader

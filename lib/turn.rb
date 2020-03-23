@@ -16,15 +16,23 @@ class Turn
   def winner
     if @type == :basic
       if player1.deck.rank_of_card_at(0) > player2.deck.rank_of_card_at(0)
+      #p "#{player1.name} wins!"
+      pile_cards
         player1
       else
+        pile_cards
         player2
+        #p "#{player2.name} wins!"
       end
     elsif @type == :war
       if player1.deck.rank_of_card_at(2) > player2.deck.rank_of_card_at(2)
+        #p "#{player1.name} wins!"
+        pile_cards
         player1
       else
+        pile_cards
         player2
+        #p "#{player2.name} wins!"
       end
     elsif @type == :mad
       first_cards_are_same = player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0)
@@ -42,11 +50,14 @@ class Turn
   end
 
   def pile_cards
-    spoils_of_war << player1.deck.remove_card
-    spoils_of_war << player2.deck.remove_card
+    @spoils_of_war << @player1.deck.remove_card
+    @spoils_of_war << @player2.deck.remove_card
   end
 
   def award_spoils(winner)
-    winner.deck.cards << spoils_of_war
+    spoils_of_war.each do |card|
+      winner.deck.cards << card
+    end
+    spoils_of_war.count
   end
 end

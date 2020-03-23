@@ -71,9 +71,11 @@ class DeckTest < Minitest::Test
       Card.new(:spades, "Ace", 13),
       Card.new(:hearts, "Nine", 9)
     ]
+    expected = [cards[1], cards[2]]
 
     deck = Deck.new(cards)
-    assert_equal cards.shift, deck.remove_card
+    assert_equal cards[0], deck.remove_card
+    assert_equal 2, deck.cards.length
     #cards index zero to make sure first card is the one removed
   end
 

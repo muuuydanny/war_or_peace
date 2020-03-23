@@ -8,7 +8,7 @@ require './lib/turn'
 class PlayerTest < Minitest::Test
   def setup
     card1 = Card.new(:heart, 'Jack', 11)
-    card2 = Card.new(:spades, "Ace", 13)
+    card2 = Card.new(:spades, "Ace", 14)
     card3 = Card.new(:heart, 'Nine', 9)
     card4 = Card.new(:diamond, 'Jack', 11)
     card5 = Card.new(:heart, 'Eight', 8)
@@ -59,6 +59,7 @@ class PlayerTest < Minitest::Test
 
     def test_spoils_of_war_added_to_winner
       turn = Turn.new(@player1, @player2)
+      turn.pile_cards
       turn.award_spoils(@player1)
       assert_equal 5, @player1.deck.cards.count
     end
